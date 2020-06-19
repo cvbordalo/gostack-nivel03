@@ -2,7 +2,7 @@ import React from 'react';
 
 import logoImg from '../../assets/github-logo.svg';
 
-import { Title, Form } from './styles';
+import { Title, Form, Repositories } from './styles';
 
 const Dashboard: React.FC = () => {
   return (
@@ -14,6 +14,22 @@ const Dashboard: React.FC = () => {
         <input placeholder="Type repository's name" />
         <button type="submit">Search</button>
       </Form>
+
+      <Repositories>
+        <a href="teste">
+          <img
+            src="https://avatars3.githubusercontent.com/u/54056008?s=460&u=fe05ec37b163c5f89f97eb3ff171ff8ec5d8b128&v=4Ca"
+            alt="Carlos Bordalo"
+          />
+          <div>
+            <strong>cvbordalo/aircnc</strong>
+            <p>
+              An AirBnB clone using React.JS, Node.js and React Native. Code and
+              Coffee
+            </p>
+          </div>
+        </a>
+      </Repositories>
     </>
   );
 };
