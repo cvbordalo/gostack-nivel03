@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiChevronRight } from 'react-icons/fi';
 
 import logoImg from '../../assets/github-logo.svg';
 
@@ -23,11 +24,34 @@ const Dashboard: React.FC = () => {
           />
           <div>
             <strong>cvbordalo/aircnc</strong>
-            <p>
-              An AirBnB clone using React.JS, Node.js and React Native. Code and
-              Coffee
-            </p>
+            <p>An AirBnB clone using React.JS. Code and Coffee</p>
           </div>
+
+          <FiChevronRight size={20} />
+        </a>
+        <a href="teste">
+          <img
+            src="https://avatars3.githubusercontent.com/u/54056008?s=460&u=fe05ec37b163c5f89f97eb3ff171ff8ec5d8b128&v=4Ca"
+            alt="Carlos Bordalo"
+          />
+          <div>
+            <strong>cvbordalo/aircnc</strong>
+            <p>An AirBnB clone using React.JS. Code and Coffee</p>
+          </div>
+
+          <FiChevronRight size={20} />
+        </a>
+        <a href="teste">
+          <img
+            src="https://avatars3.githubusercontent.com/u/54056008?s=460&u=fe05ec37b163c5f89f97eb3ff171ff8ec5d8b128&v=4Ca"
+            alt="Carlos Bordalo"
+          />
+          <div>
+            <strong>cvbordalo/aircnc</strong>
+            <p>An AirBnB clone using React.JS. Code and Coffee</p>
+          </div>
+
+          <FiChevronRight size={20} />
         </a>
       </Repositories>
     </>
