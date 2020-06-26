@@ -24,11 +24,12 @@ const Dashboard: React.FC = () => {
   ): Promise<void> {
     event.preventDefault();
 
-    const response = await api.get(`repos/${newRepo}`);
+    const response = await api.get<Repository>(`repos/${newRepo}`);
 
     const repository = response.data;
 
     setRepositories([...repositories, repository]);
+    setNewRepo('');
   }
 
   return (
@@ -46,18 +47,20 @@ const Dashboard: React.FC = () => {
       </Form>
 
       <Repositories>
-        <a href="teste">
-          <img
-            src="https://avatars3.githubusercontent.com/u/54056008?s=460&u=fe05ec37b163c5f89f97eb3ff171ff8ec5d8b128&v=4Ca"
-            alt="Carlos Bordalo"
-          />
-          <div>
-            <strong>cvbordalo/aircnc</strong>
-            <p>An AirBnB clone using React.JS. Code and Coffee</p>
-          </div>
+        {repositories.map((repository) => (
+          <a key={repository.full_name} href="teste">
+            <img
+              src={repository.owner.avatar_url}
+              alt={repository.owner.login}
+            />
+            <div>
+              <strong>{repository.full_name}</strong>
+              <p>{repository.description}</p>
+            </div>
 
-          <FiChevronRight size={20} />
-        </a>
+            <FiChevronRight size={20} />
+          </a>
+        ))}
       </Repositories>
     </>
   );
