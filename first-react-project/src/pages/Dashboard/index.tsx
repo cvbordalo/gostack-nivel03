@@ -17,11 +17,16 @@ interface Repository {
 
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
+  const [inputError, setInputError] = useState('');
   const [repositories, setRepositories] = useState<Repository[]>([]);
 
   async function handleAddRepository(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
+    if (!newRepo) {
+      setInputError("Write repository's author/name");
+    }
+
     event.preventDefault();
 
     const response = await api.get<Repository>(`repos/${newRepo}`);
