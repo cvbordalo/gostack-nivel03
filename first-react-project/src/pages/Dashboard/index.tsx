@@ -37,6 +37,7 @@ const Dashboard: React.FC = () => {
 
       setRepositories([...repositories, repository]);
       setNewRepo('');
+      setInputError('');
     } catch (err) {
       setInputError('Cannot find repository');
     }
@@ -47,7 +48,7 @@ const Dashboard: React.FC = () => {
       <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositories on Github</Title>
 
-      <Form onSubmit={handleAddRepository}>
+      <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input
           value={newRepo}
           onChange={(e) => setNewRepo(e.target.value)}
