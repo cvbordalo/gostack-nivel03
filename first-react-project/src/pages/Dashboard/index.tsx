@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 import logoImg from '../../assets/github-logo.svg';
 
-import { Title, Form, Repositories } from './styles';
+import { Title, Form, Repositories, Error } from './styles';
 
 interface Repository {
   full_name: string;
@@ -23,18 +23,23 @@ const Dashboard: React.FC = () => {
   async function handleAddRepository(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
-    if (!newRepo) {
-      setInputError("Write repository's author/name");
-    }
-
     event.preventDefault();
 
-    const response = await api.get<Repository>(`repos/${newRepo}`);
+    if (!newRepo) {
+      setInputError("Write repository's author/name");
+      return;
+    }
 
-    const repository = response.data;
+    try {
+      const response = await api.get<Repository>(`repos/${newRepo}`);
 
-    setRepositories([...repositories, repository]);
-    setNewRepo('');
+      const repository = response.data;
+
+      setRepositories([...repositories, repository]);
+      setNewRepo('');
+    } catch (err) {
+      setInputError('Cannot find repository');
+    }
   }
 
   return (
@@ -50,6 +55,8 @@ const Dashboard: React.FC = () => {
         />
         <button type="submit">Search</button>
       </Form>
+
+      {inputError && <Error>{inputError}</Error>}
 
       <Repositories>
         {repositories.map((repository) => (
