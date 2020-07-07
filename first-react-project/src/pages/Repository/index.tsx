@@ -18,7 +18,11 @@ const Repository: React.FC = () => {
     api.get(`repos/${params.repository}`).then((response) => {
       console.log(response.data);
     });
-  }, []);
+
+    api.get(`repos/${params.repository}/issues`).then((response) => {
+      console.log(response.data);
+    });
+  }, [params.repository]);
 
   return (
     <>
